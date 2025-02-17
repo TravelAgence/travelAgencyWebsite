@@ -5,6 +5,14 @@ import jwt from "jsonwebtoken"
 //User registration
 export const register = async (req, res) => {
     try{
+        // function for  creat activation code 
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let activationCode = "";
+        for (let i = 0; i < 25; i++) {
+            activationCode += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+
+
         // hashing the password
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(req.body.password, salt)
@@ -14,6 +22,7 @@ export const register = async (req, res) => {
             email: req.body.email,
             password: hash,  
             photo: req.body.photo,
+            activationCode: activationCode,
         })
     
         await newUser.save()
