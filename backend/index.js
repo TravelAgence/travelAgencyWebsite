@@ -8,6 +8,7 @@ import userRoute from './routes/users.js';
 import authRoute from "./routes/auth.js"; // ✅ Correct Import
 import hotelRoutes from "./routes/hotel.js"; // ✅ Correct Import
 
+import visaRoutes from "./routes/visaRoutes.js"; // ✅ Correct Import
 
 
 dotenv.config();
@@ -39,6 +40,7 @@ app.use(cookieParser());
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/hotels", hotelRoutes); // ✅ Correct Route
+app.use("/api/v1", visaRoutes);
 
 
 // ✅ Start Server *Only After* DB is Connected

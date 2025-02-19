@@ -49,3 +49,42 @@ export const sendEmail = async (email, activationCode) => {
         console.log(err);
     }
 };
+
+// Send email to user confirming visa request submission
+export const sendVisaConfirmationEmail = async (email, message) => {
+    try {
+        await transporter.sendMail({
+            from: "yassinedebich214@gmail.com",
+            to: email,
+            subject: "Visa Request Confirmation",
+            html: `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                        <h4>Visa Request Confirmation</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Dear User,</p>
+                                        <p>${message}</p>
+                                        <p>Best regards,<br>Travel Agency Team</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
