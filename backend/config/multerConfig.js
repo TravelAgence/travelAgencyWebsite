@@ -5,8 +5,8 @@ import cloudinary from './cloudinaryConfig.js';
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'passport_images',
-    allowed_formats: ['jpeg', 'jpg', 'png'],
+    folder: 'passport_images', // Cloudinary folder name
+    allowed_formats: ['jpeg', 'jpg', 'png'], // Allowed formats
   },
 });
 
